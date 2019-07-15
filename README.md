@@ -3,6 +3,14 @@ https://www.amazon.co.jp/dp/4797327030/ref=cm_sw_r_li_dp_U_-ZlpCbPVQHQFA
 
 これを読んでRubyで書き直すよ
 
+他に参考にした記事だよ
+
+[Rubyによるデザインパターンまとめ](https://qiita.com/yuji_ariyasu/items/588fef6062b3c7149509)
+
+[Ruby デザインパターン](https://qiita.com/color_box/items/9aefd138208faf2335a4)
+
+[【初心者向け】Rubyによる使えるデザインパターン(GoF)](https://qiita.com/moriyaman/items/0ff9e969901b55da5463)
+
 # UML
 ## クラス図
 矢印の△部分は、サブクラスからスーパークラスに対して伸びる。
