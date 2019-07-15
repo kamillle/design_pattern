@@ -1,13 +1,22 @@
-class Aggregate
+# public interface Aggregate {
+#     puclic abstract 戻り値の型 メソッド名
+#     public abstract Interator iterator();
+# }
+module Aggregate
   def iterator
+    # Interator Classのオブジェクトが返るように実装する
+    #
+    raise NotImplementedError, "#{self.class}##{__method__} must be implemented"
   end
 end
 
-class Iterator
+module Iterator
   def has_next?
+    raise NotImplementedError, "#{self.class}##{__method__} must be implemented"
   end
 
   def next
+    raise NotImplementedError, "#{self.class}##{__method__} must be implemented"
   end
 end
 
@@ -20,7 +29,9 @@ class Book
 end
 
 class BookShelf
-  attr_accessor :books, :maxsize, :last
+  include Aggregate
+
+  attr_accessor :maxsize
 
   def initialize(maxsize)
     @books = []
@@ -29,26 +40,29 @@ class BookShelf
   end
 
   def get_book_at(index)
-    books[index]
+    @books[index]
   end
 
   def append_book(book)
-    books[last] = book
+    @books[@last] = book
 
-    self.last += 1
+    @last += 1
+
+    nil
   end
 
   def get_length
-    last
+    @last
   end
 
+  # Aggregate moduleで定義したインターフェイスを実装する
   def iterator
     BookShelfIterator.new(self)
   end
 end
 
 class BookShelfIterator
-  attr_accessor :book_shelf, :index
+  include Iterator
 
   def initialize(book_shelf)
     @book_shelf = book_shelf
@@ -56,7 +70,7 @@ class BookShelfIterator
   end
 
   def has_next?
-    if self.index < book_shelf.get_length
+    if @index < @book_shelf.get_length
       return true
     else
       return false
@@ -64,8 +78,8 @@ class BookShelfIterator
   end
 
   def next
-    book = book_shelf.get_book_at(index)
-    self.index += 1
+    book = @book_shelf.get_book_at(@index)
+    @index += 1
 
     book
   end
@@ -79,10 +93,10 @@ class Main
     book_shelf.append_book(Book.new("Cinderella"))
     book_shelf.append_book(Book.new("Daddy-Long-Legs"))
 
-    it = book_shelf.iterator
+    iterator = book_shelf.iterator
 
-    while it.has_next?
-      book = it.next
+    while iterator.has_next?
+      book = iterator.next
       p book.name
     end
   end
