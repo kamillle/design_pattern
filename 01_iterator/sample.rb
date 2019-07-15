@@ -56,6 +56,7 @@ class BookShelf
   end
 
   # Aggregate moduleで定義したインターフェイスを実装する
+  # BookShelの数え上げ等の責務をBookShelfIteratorに委譲する
   def iterator
     BookShelfIterator.new(self)
   end
