@@ -7,6 +7,8 @@ class Singleton
     private
 
     # メモ化しておくことで何度初期化しても同じobject_idのインスタンスが返るようにする
+    # メモ化以外にも @@variable (クラス変数) を使う手段もある
+    # @@singleton = self.new
     def singleton
       @singleton ||= self.new
     end
