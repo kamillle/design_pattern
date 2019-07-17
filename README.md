@@ -3,6 +3,8 @@ https://www.amazon.co.jp/dp/4797327030/ref=cm_sw_r_li_dp_U_-ZlpCbPVQHQFA
 
 これを読んでRubyで書き直すよ
 
+Rubyでのデザインパターンコードとして[このリポジトリ](https://github.com/davidgf/design-patterns-in-ruby)を参考にしたよ
+
 他に参考にした記事だよ
 
 [Rubyによるデザインパターンまとめ](https://qiita.com/yuji_ariyasu/items/588fef6062b3c7149509)
