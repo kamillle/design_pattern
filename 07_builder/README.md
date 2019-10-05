@@ -1,0 +1,24 @@
+# Builderパターン
+複雑な構造のオブジェクトを作る際に使用される
+
+## Builder
+Builderクラスが担う
+
+インスタンスを生成するためのAPI(インターフェース)を決める。API内部の挙動は実装してない
+サンプルプログラムでは作成したい文章をコンポーネント単位で作成するAPIを定めた
+目的を達成するために必要なAPIを全て提供する必要がある
+
+## ConcreateBuilder
+TextBuilder, HtmlBuilderが担う
+
+BuilderのAPIの内部を実装しているクラス
+最終的な結果(インスタンス)を取得するためのインターフェースを実装するのも役割となる
+
+## Director
+Directorクラスが担う
+
+汎用的であるためにConcreateBuilderが独自に実装したAPIなどは使用せず、Builderが定めたAPIだけを使う
+
+## memo
+利用者であるMainクラスからはBuilderクラスのAPIは隠蔽されている。MainクラスはDirector#constractを通してインスタンスが生成できることだけ知っており、Directorクラスだけがインスタンスの生成方法(BuilderのAPI)をしる構造になっている
+DirectorはBuilderのAPIは知っているけど、自身が呼び出しているクラス名は知らない(BuilderのAPIを実装したクラスを外部から渡されているので)
