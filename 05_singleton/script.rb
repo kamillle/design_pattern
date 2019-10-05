@@ -39,4 +39,10 @@ class Main
   end
 end
 
+# return below
+#
+# start
+# インスタンスを生成しました
+# singleton1 is same object as singleton2
+# end
 Main.execute
